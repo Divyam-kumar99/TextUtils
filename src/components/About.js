@@ -1,36 +1,43 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle,setmyStyle]=useState({
-    color: 'black',
-    backgroundColor: 'white'
-  })
-  const[btnText,setbtnText]=useState("Enable Dark Mode");
-  const enableColor=()=>{
-    if(myStyle.color==='white'){
-        setmyStyle(
-            {
-                color: 'black',
-                backgroundColor: 'white'
-            }
-        )
-        setbtnText('Use Dark Mode');
-    }
-    else{
+export default function About(props) {
+  // const [myStyle,setmyStyle]=useState({
+  //   color: 'black',
+  //   backgroundColor: 'white'
+  // })
+//   const[btnText,setbtnText]=useState("Enable Dark Mode");
+//   const enableColor=()=>{
+//     if(myStyle.color==='white'){
+//         setmyStyle(
+//             {
+//                 color: 'black',
+//                 backgroundColor: 'white'
+//             }
+//         )
+//         setbtnText('Use Dark Mode');
+//     }
+//     else{
        
-            setmyStyle(
-                {
-                    color: 'white',
-                    backgroundColor: 'black',
-                    border: '1px solid white'
-                }
-            )
-            setbtnText('Use Light Mode');
+//             setmyStyle(
+//                 {
+//                     color: 'white',
+//                     backgroundColor: 'black',
+//                     border: '1px solid white'
+//                 }
+//             )
+//             setbtnText('Use Light Mode');
     
+//   }
+// }
+
+  let myStyle={
+    color: props.mode==='dark'? 'white':'black',
+    backgroundColor: props.mode==='dark'? 'black':'white',
+
+
   }
-}
   return (
-    <div className="container " style={myStyle}>
+    <div className="container my-3 " style={myStyle}>
         <h1>About Us</h1>
       <div className="accordion" style={myStyle} id="accordionExample">
         <div className="accordion-item">
@@ -131,7 +138,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <button className="mt-2 btn btn-primary" onClick={enableColor} >{btnText}</button> 
+      {/* <button className="mt-2 btn btn-primary" onClick={enableColor} >{btnText}</button>  */}
 
     </div>
   );

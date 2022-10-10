@@ -49,11 +49,13 @@ function App() {
     <>
     {/* jsx fragment */}
     <BrowserRouter>
-      <Navbar title="title" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
+      <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert}/>
         <Switch>
 
-          <Route exact path="/about" component={About}/>
+          <Route exact path="/about" >
+            <About mode={mode}/>
+          </Route>
             
           
           <Route exact path="/">

@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 
 export default function Textform(props) {
-    const[text,setText]=useState("Enter the Text here")
+    const[text,setText]=useState("")
     // text="Cannot update this way.shows error";
     const handleUpClick=()=>{
         console.log("handle Upper case Triggered"+ text);
@@ -47,19 +47,21 @@ export default function Textform(props) {
             <label htmlFor='myBox'  className="form-label">{props.heading}</label>
             <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='light'?'white':'grey',
         color: props.mode==='light'?'black':'white'}} id="myBox" rows="8"></textarea>
-            <button className="mt-2 btn btn-primary" onClick={handleUpClick}>Convert text to UpperCase</button> 
-            <button className="mt-2 btn btn-secondary mx-2" onClick={handlelowerClick}>Convert text to LowerCase</button> 
-            <button className="mt-2 btn btn-primary" onClick={handleCopy}>Copy Text</button> 
+            <button className=" btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert text to UpperCase</button> 
+            <button className=" btn btn-secondary mx-1 my-1" onClick={handlelowerClick}>Convert text to LowerCase</button> 
+            <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>Copy Text</button> 
 
-            <button className="mt-2 btn btn-danger " onClick={clear}>Clear</button>  
-            <button className="mt-2 btn btn-success " onClick={removeSpaces}>Remove extra spaces</button>  
+            <button className=" btn btn-danger mx-1 my-1" onClick={clear}>Clear</button>  
+            <button className=" btn btn-success mx-1 my-1" onClick={removeSpaces}>Remove extra spaces</button>  
 
 
 
         </div>
         <div className="container" style={{color: props.mode==='light'?'black':'white'}}>
             <h1>Your Text Summary</h1>
-            <p>{text.split(" ").length} Words in your text & {text.length} characters</p>
+            <p>{text.split(" ").filter((element)=>{
+                return element.length!==0
+            }).length} Words in your text & {text.length} characters</p>
             <p>{0.008*text.split(" ").length} Min to read this article</p>
             <h2>Article Preview</h2>
             <p>{text.length>0?text:"Enter Your Text to Preview..."}</p>
